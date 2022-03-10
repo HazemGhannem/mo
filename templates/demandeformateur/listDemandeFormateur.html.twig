@@ -1,0 +1,99 @@
+{% extends 'Backend/layout.html.twig' %}
+{% block header %}
+
+{% endblock %}
+
+{% block body %}
+<div class="sidebar sidebar-dark sidebar-main sidebar-fixed sidebar-expand-md">
+  {% include 'Backend/Dashboard/_sidebar.html.twig' %}
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table datatable">
+            <thead>
+  <tr>
+    <td>Nom</td>
+    <td>Prenom</td>
+    <td>Sexe</td>
+    <td>Mail</td>
+    <td>tel</td>
+    <td>Adresse</td>
+    <td>date de naissance</td>
+    <td>CV </td>
+    <td>Supprimer</td>
+    <td>Télecharger cv</td>
+    <td>extract</td>
+
+  </tr>
+  <tbody>
+  <tr {% for item in form %}>
+  
+    <td>{{item.Nom}}</td>
+    <td>{{item.Prenom}}</td>
+    <td>{{item.sexe}}</td>
+    <td>{{item.Mail}}</td>
+    <td>{{item.Telephone}}</td>
+    <td>{{item.Adresse}}</td>
+    <td>{{item.DateDeNaissance|date('d/m/y')}}</td>
+    <td>{{item.CV}}</td> 
+    <td><a href="{{ path('Delete_formateur',{'id':item.id})  }}" src="{{asset('uploads/') ~ item.CV}}" > Supprimer</a> </td>
+    <td><a href="{{path('download_file',{'id':item.id})}}">Telecharger</a></td>
+     <td><a href="{{path('extract',{'id':item.id})}}">extract</a></td>
+    
+    </tr {% endfor %}>
+    </tbody>
+    {{ knp_pagination_render(form) }}
+</table>
+
+    </div>
+</div>
+
+  
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+{% endblock %}
+
+{% block stylesheet %}
+    <link href="{{ asset('assets/vendor/plugins/pickers/bootstrap/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/vendor/plugins/pickers/bootstrap/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/plugins/pickers/bootstrap/locales/bootstrap-datepicker.fr.min.js') }}"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+

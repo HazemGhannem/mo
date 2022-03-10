@@ -1,0 +1,29 @@
+Controller.php
+
+
+    /**
+     * @param $id
+     * @param FormationRepository $repository
+     * @param Request $request
+     * @Route("/formation/recherche", name="recherche")
+     */
+    function  recherche(FormationRepository$repository , Request $request){
+$data=$request->get('search');
+        $formation=$repository->findBy(['id'=>$data]);
+        return $this->render('formation/afficheFormation.html.twig', [
+            'formation' => $formation
+        ]);
+    }
+ 
+ ************************************************************
+ 
+ 
+afficheFormation.html.twig
+
+
+<div class="search-container">
+    <form method="post" action="{{ path('recherche') }}">
+        <input type="text" placeholder="Search.." name="search" value="recherche">
+        <button type="submit"><i class="fa fa-search"></i> search </button>
+    </form>
+</div>

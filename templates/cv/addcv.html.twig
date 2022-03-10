@@ -1,0 +1,99 @@
+{% extends 'addcv.html.twig' %}
+
+{% block body %}
+
+<h1> Faire votre cv </h1>
+{{ form_start(formA,{'attr':{'novalidate':'novalidate'}}) }}
+<table class="table datatable">
+    <tr>
+            <td>{{ form_label(formA.nom) }}</td>
+            <td>{{ form_widget(formA.nom) }}</td>
+            <td>{{ form_errors(formA.nom) }}</td>
+        </tr>
+
+        <tr>
+            <td> {{ form_label(formA.prenom) }}</td>
+            <td>{{ form_widget(formA.prenom) }}</td>
+            <td>{{ form_errors(formA.prenom) }}</td>
+        </tr>
+
+        <tr>
+            <td> {{ form_label(formA.mail) }}</td>
+            <td>{{ form_widget(formA.mail) }}</td>
+            <td>{{ form_errors(formA.mail) }}</td>
+        </tr>
+
+        <tr>
+            <td> {{ form_label(formA.titredeprofil) }}</td>
+            <td>{{ form_widget(formA.titredeprofil) }}</td>
+            <td>{{ form_errors(formA.titredeprofil) }}</td>
+        </tr>
+
+
+        <tr>
+            <td> {{ form_label(formA.telephone) }}</td>
+            <td>{{ form_widget(formA.telephone) }}</td>
+            <td>{{ form_errors(formA.telephone) }}</td>
+
+        </tr>
+
+        <tr>
+            <td> {{ form_label(formA.adresse) }}</td>
+            <td>{{ form_widget(formA.adresse) }}</td>
+            <td>{{ form_errors(formA.adresse) }}</td>
+
+        </tr>
+
+        <tr>
+            <td> {{ form_label(formA.ville) }}</td>
+            <td>{{ form_widget(formA.ville) }}</td>
+            <td>{{ form_errors(formA.ville) }}</td>
+        </tr>
+       
+
+        <tr>
+            <td> {{ form_label(formA.Experience) }}</td>
+            <td>{{ form_widget(formA.Experience) }}</td>
+            <td>{{ form_errors(formA.Experience) }}</td>
+        </tr> 
+
+        <tr>
+            <td> {{ form_label(formA.Formation) }}</td>
+            <td>{{ form_widget(formA.Formation) }}</td>
+            <td>{{ form_errors(formA.Formation) }}</td>
+        </tr>
+        </table>
+ {{ form_end(formA) }}
+{% endblock %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+    <link href="{{ asset('assets/vendor/plugins/pickers/bootstrap/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block js %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ asset('assets/vendor/plugins/pickers/bootstrap/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/plugins/pickers/bootstrap/locales/bootstrap-datepicker.fr.min.js') }}"></script>
+    <script type="text/javascript">
+        // add row
+        $("#addRow").click(function () {
+            var html = '';
+            html += '<div id="inputFormRow">';
+            html += '<div class="input-group mb-3">';
+            html += '<input type="text" name="title[]" class="form-control m-input" placeholder="Enter title" autocomplete="off">';
+            html += '<div class="input-group-append">';
+            html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
+            html += '</div>';
+            html += '</div>';
+
+            $('#newRow').append(html);
+        });
+
+        // remove row
+        $(document).on('click', '#removeRow', function () {
+            $(this).closest('#inputFormRow').remove();
+        });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,75 @@
+{% extends 'FAQ.html.twig' %}
+{% block header %}
+{% endblock %}
+
+
+{% block body %}
+<h1> Saisir une demande de formation </h1>
+
+ {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+<table class="table datatable">
+
+        <tr>
+            <td> {{ form_label(form.Nom) }}</td>
+            <td>{{ form_widget(form.Nom) }}</td>
+            <td>{{ form_errors(form.Nom) }}</td>
+        </tr>
+
+        <tr>
+            <td> {{ form_label(form.Prenom) }}</td>
+            <td>{{ form_widget(form.Prenom) }}</td>
+            <td>{{ form_errors(form.Prenom) }}</td>
+        </tr>
+
+        <tr>
+            <td> {{ form_label(form.Mail) }}</td>
+            <td>{{ form_widget(form.Mail) }}</td>
+            <td>{{ form_errors(form.Mail) }}</td>
+        </tr>
+        <tr>
+
+            <td> {{ form_label(form.Telephone) }}</td>
+            <td>{{ form_widget(form.Telephone) }}</td>
+            <td>{{ form_errors(form.Telephone) }}</td>
+        </tr>
+        <tr>
+
+            <td> {{ form_label(form.Adresse) }}</td>
+            <td>{{ form_widget(form.Adresse) }}</td>
+            <td>{{ form_errors(form.Adresse) }}</td>
+        </tr>
+        <tr>
+
+            <td> {{ form_label(form.sexe) }}</td>
+            <td>{{ form_widget(form.sexe) }}</td>
+            <td>{{ form_errors(form.sexe) }}</td>
+        </tr>
+        <tr>
+
+            <td> {{ form_label(form.CV) }}</td>
+            <td>{{ form_widget(form.CV) }}</td>
+            <td>{{ form_errors(form.CV) }}</td>
+        </tr>
+        
+        <tr>
+
+            <td> {{ form_label(form.DateDeNaissance) }}</td>
+            <td>{{ form_widget(form.DateDeNaissance) }}</td>
+            <td>{{ form_errors(form.DateDeNaissance) }}</td>
+        </tr>
+
+        </table>
+ {{ form_end(form) }}
+{% endblock %}
+
+    
+{% block stylesheet %}
+    <link href="{{ asset('assets/vendor/plugins/pickers/bootstrap/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/vendor/plugins/pickers/bootstrap/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/plugins/pickers/bootstrap/locales/bootstrap-datepicker.fr.min.js') }}"></script>
+{% endblock %}
+
+
